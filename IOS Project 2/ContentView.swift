@@ -15,7 +15,7 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
             HStack {
-                Text("Hello!")
+                Text("Hello! Hi")
             }
         }
         .padding()

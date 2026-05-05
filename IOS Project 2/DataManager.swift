@@ -9,6 +9,10 @@ import SwiftUI
 
 @Observable
 class DataManager {
-    private let apiURL = "https://api-endpoint.mta.info/"
-    private let apiEndpointL = "Dataservice/mtagtfsfeeds/nyct%2Fgtfs-l"
+    private let apiURL = "https://deckofcardsapi.com/api/deck/"
+    private var deckSize = 2
+    
+    init(deckSize: Int = 2) {
+        self.deckSize = deckSize
+    }
 }

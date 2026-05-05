@@ -7,18 +7,11 @@
 
 import SwiftUI
 
-// https://api.mta.info/#/subwayRealTimeFeeds
-
 struct ContentView: View {
+    @Environment(DataManager.self) private var dataManager: DataManager
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-            HStack {
-                Text("Hello! Hi")
-            }
+            Text("placeholder")
         }
         .padding()
     }
@@ -26,4 +19,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environment(DataManager())
 }

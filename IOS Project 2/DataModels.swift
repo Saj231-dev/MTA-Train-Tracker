@@ -17,16 +17,18 @@ struct Deck: Codable {
 }
 
 struct Card: Codable, Identifiable {
-    var id = UUID()
     var code: String
     var image: String
-    var value: Int
+    var value: String
     var suit: String
-}
-
-enum subType {
-    case deck
-    case card
+    var id = UUID()
+    
+    enum CodingKeys: String, CodingKey {
+        case code
+        case image
+        case value
+        case suit
+    }
 }
 
 // Note: This might or might not work, we have to set up the basic api decoding stuff beforehand

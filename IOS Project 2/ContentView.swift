@@ -10,24 +10,28 @@ import SwiftUI
 struct ContentView: View {
     @Environment(DataManager.self) private var dataManager: DataManager
     @State private var cards: [Card] = []
+    @State private var onClick: Bool = false
     var body: some View {
         VStack {
             ScrollView(.horizontal) {
                 LazyHStack {
                     ForEach(cards) { card in
-                        Text(card.suit)
+                        AsyncImage(url: URL(string: card.image))
                     }
                 }
             }
+            Button("Shuffle") {
+                onClick = true
+            }
         }
         .task {
-            let deck = await dataManager.drawCard()
+            var deck = await dataManager.drawCard()
             if let unwrappedDeck = deck {
-                for card in unwrappedDeck.deck.cards {
+                for card in unwrappedDeck.cards {
                     cards.append(card)
                 }
-                if cards.count == 52 {
-                    await dataManager.shuffle(deckID: unwrappedDeck.deckID.deck_id)
+                if onClick {
+                    deck = await dataManager.shuffle(deck: unwrappedDeck)
                 }
             }
         }

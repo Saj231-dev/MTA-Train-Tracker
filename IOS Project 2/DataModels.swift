@@ -7,11 +7,8 @@
 
 import Foundation
 
-struct DeckID: Codable {
-    var deck_id: String
-}
-
 struct Deck: Codable {
+    var deck_id: String
     var cards: [Card]
     var remaining: Int
 }
@@ -31,4 +28,3 @@ struct Card: Codable, Identifiable {
     }
 }
 
-// Note: This might or might not work, we have to set up the basic api decoding stuff beforehand
